@@ -4,6 +4,7 @@ import FormularioPostagem from "./components/FormularioPostagem/FormularioPostag
 import { Header } from "./components/Header";
 import TelaDaPostagem from "./components/TelaDaPostagem/TelaDaPostagem";
 import FormularioLogin from "./components/FormularioLogin/FormularioLogin";
+
 const GlobalStyle = createGlobalStyle`
   * {
     margin: 0;
@@ -20,19 +21,48 @@ const Container = styled.div`
 
 function App() {
   const [pageFlow, setPageFlow] = useState(1);
+
+  const [nome, setNome] = useState('')
+  const [foto, setFoto] = useState('')
+
+  const dadosUsuario = {
+    nome: nome,
+    foto: foto
+  }
+
+  const [post, setPost] = useState({
+    titulo: '',
+    image: '',
+    descricao: '',
+  })
+
+  console.log(post);
   return (
     <>
       <GlobalStyle />
       <Container>
         <aside>
-          <Header />
+          <Header 
+            dadosUsuario={dadosUsuario}
+            pageFlow={pageFlow}
+          />
           {pageFlow === 1 ? (
-            <FormularioLogin setPageFlow={setPageFlow} />
+            <FormularioLogin
+              setPageFlow={setPageFlow}
+              nome={nome}
+              setNome={setNome}
+              foto={foto}
+              setFoto={setFoto}
+            />
           ) : (
-            <FormularioPostagem />
+              <FormularioPostagem
+                setPost={setPost}
+              />
           )}
         </aside>
-        <TelaDaPostagem />
+        <TelaDaPostagem
+          post={post}
+        />
       </Container>
     </>
   );

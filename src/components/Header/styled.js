@@ -1,9 +1,24 @@
 import styled from "styled-components"
 
-export const TitleHeader = styled.header`
-    font-size: 32px;
+export const HeaderStyle = styled.header`
     display: flex;
-    align-items: center;
+    flex-direction: row;
     justify-content: center;
-    height: 8vh;
+    align-items: center;
+`
+
+export const TitleHeader = styled.h1`
+    font-size: 32px;
+    margin: 10px;
+`
+export const Image = styled.img`
+    border-radius: 100%;
+    height: 50px;
+    width: 50px;
+    margin: 10px;
+`
+
+export const NomeUsuario = styled.h2`
+    font-size: 32px;
+    margin: 10px;
 `

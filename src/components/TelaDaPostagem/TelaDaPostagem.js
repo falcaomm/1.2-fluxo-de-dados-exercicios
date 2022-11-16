@@ -1,16 +1,20 @@
 import React from "react";
-import { TitleHeader } from "../Header/styled";
-import { ContainerPostagem, Image, Description } from "./styles";
+import { ContainerPostagem, Image, Description, Title } from "./styles";
 
-const TelaDaPostagem = () => {
-
+const TelaDaPostagem = (props) => {
   return (
-    <ContainerPostagem>
-      <TitleHeader>Um titulo</TitleHeader>
-      <Image src={"https://picsum.photos/536/354"} />
-      <Description>Uma descrição</Description>
-    </ContainerPostagem>
-  );
-};
+    (props.post.image.length > 0) ?
+      <ContainerPostagem>
+        <Title>{props.post.titulo}</Title>
+        <Image src={props.post.image} alt='Insira sua imagem por link aqui' />
+        <Description>{props.post.descricao}</Description>
+      </ContainerPostagem>
+      :
+      <ContainerPostagem>
+        <Image src="https://lojastalim.com.br/894-large_default/placa-decorativa-personalizada-sua-imagem-aqui.jpg" alt='descrição' />
+      </ContainerPostagem>
+    
+  )
+}
 
 export default TelaDaPostagem;
